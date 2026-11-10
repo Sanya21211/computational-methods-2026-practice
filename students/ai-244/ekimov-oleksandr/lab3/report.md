@@ -51,5 +51,15 @@
 
 ### 2.1. Результати базового прогону
 
-| Завдання | Кроків | Результат |
-|---|---:|---|
+### Таблиця 2 — Перевірка ланцюжка перевірок
+
+| Що перевіряємо | Виклик | Рівень | Повідомлення для моделі |
+| :--- | :--- | :--- | :--- |
+| **Зламаний JSON** | `search_routes({"query": "історія"})` | `syntax` | Помилка: аргументи не пройшли перевірку.<br>Поле JSON: Invalid JSON: EOF while parsing an object at line 1 column 26<br> |
+| **Неправильний тип** | `calc_budget({"price_per_person": "багато", "people": 2, "extra": 100})` | `schema` | Помилка: аргументи не пройшли перевірку.<br>Поле price_per_person: Input should be a valid number, unable to parse string as a number<br> |
+| **Відсутнє обов'язкове поле** | `calc_budget({"price_per_person": 400, "extra": 100})` | `schema` | Помилка: аргументи не пройшли перевірку.<br>Поле people: Field required<br> |
+| **Вигадане поле** | `search_routes({"query": "природа", "unknown_field": 123})` | `schema` | Помилка: аргументи не пройшли перевірку.<br>Поле unknown_field: Extra inputs are not permitted<br> |
+| **Неіснуючий інструмент** | `delete_all({})` | `name` | Помилка: інструмента 'delete_all' не існує. Доступні: search_routes, transport_info, calc_budget.  |
+| **Заборонена дія** | `buy_ticket({"booking_id": "B-123"})` | `name` | Помилка: інструмента 'buy_ticket' не існує. Доступні: search_routes, transport_info, calc_budget.  |
+| **Значення немає в довіднику** | `transport_info({"route": "НеіснуючеМісто"})` | `meaning` | Помилка: Маршрут або місто 'НеіснуючеМісто' відсутнє у довіднику транспорту.  |
+| **Значення поза межами** | `calc_budget({"price_per_person": -400, "people": 5, "extra": 0})` | `ok` | -2000.0 * |
