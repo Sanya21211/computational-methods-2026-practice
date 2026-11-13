@@ -176,3 +176,16 @@ ARGS = {
 ### Порівняння двох прогонів
 
 Таблиця 6 — Порівняння прогонів у Langfuse
+
+
+
+### Траса, де модель помилилася і виправилася
+
+<img width="589" height="211" alt="image" src="https://github.com/user-attachments/assets/caa4db6f-2a96-44ec-8358-4e13000cc8a5" />
+
+Рис. 2 — Дерево траси: виклик моделі → call_tool → виклик моделі.
+
+
+### Траса задачі, розв'язаної неправильно
+
+<img width="456" height="135" alt="image" src="https://github.com/user-attachments/assets/aae663b2-a805-44ea-949b-e653f99c9ae9" />
