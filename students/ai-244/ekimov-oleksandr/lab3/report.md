@@ -169,3 +169,10 @@ ARGS = {
 ## Аналіз трас у Langfuse
 
 ### Структура події
+<img width="1403" height="875" alt="event_structure" src="https://github.com/user-attachments/assets/e46bb741-1c9d-4311-b190-48d8fccbb984" />
+
+Рис. 1 — Крок, вхід, рішення, дія і результат в трасі: крок — вузол OpenAI-generation (виклик моделі); вхід — історія повідомлень (system і питання користувача); рішення — виклик search_routes; дія — вузол call_tool; результат — вихід call_tool (рівень meaning і текст помилки, який повертається моделі).
+
+### Порівняння двох прогонів
+
+Таблиця 6 — Порівняння прогонів у Langfuse
